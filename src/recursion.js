@@ -1,4 +1,30 @@
 // Solve all of the following prompts using recursion.
+/*
+var data = {
+  name: "Beth",
+  address: {
+    street: "123 Main",
+    city: "San Francisco",
+    whatever: {
+    	no: "no",
+    	yes: "yes"
+  	}
+  }
+};
+
+var getAllKeys = function(obj) {
+  var results = [];
+  for (var key in obj) {
+    // [name, address]
+    results.push(key);
+    if (typeof obj[key] === "object") {
+      // [street, city]
+      results = results.concat(getAllKeys(obj[key]));
+    }
+  }
+  return results;
+};
+ */
 
 // 1. Calculate the factorial of a number.  The factorial of a non-negative integer n,
 // denoted by n!, is the product of all positive integers less than or equal to n.
@@ -67,7 +93,12 @@ var isEven = function(n) {
 // 5. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-
+	if (x === y || x - y === 1 || y - x === 1) {
+		return [];
+	} else {
+		results = x < y ? [++x] : [--x];
+	}
+	return results.concat(range(x, y));
 };
 
 
