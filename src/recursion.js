@@ -24,6 +24,52 @@ var getAllKeys = function(obj) {
   }
   return results;
 };
+
+
+ // Input
+  // {a:6, b:9, c:1, d:3, e:4}
+  
+  // Output
+  // {a:true, b:false, c:false, d:false, e:true}
+  
+  // Create a function that uses reduce to to see if the values are even or not.
+  // you should not modify the input the data
+ var data = {a:6, b:9, c:1, d:3, e:4};
+ 
+ 	var useReduce = function(data){
+ 		return reduce(data, function(acc, item, key) {
+ 			acc[key] = item % 2 === 0;
+ 			return acc;
+ 		}, {});
+  };
+
+  var useReduce = function(data){
+  	var result = {};
+  	reduce(data, function(accu, item, key) {
+  		result[key] = item % 2 === 0;
+  	});
+  	return result;
+  };
+
+  
+  function each(collection, iterator) {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        iterator(collection[i], i, collection);
+      }
+    } else {
+        for (var keys in collection) {
+          iterator(collection[keys], keys, collection);
+        }
+    }
+  }
+  
+  function reduce(collection, iterator, accumulator) {
+    each(collection,function(element, key){
+      	accumulator = iterator(accumulator, element, key);
+    });
+    return accumulator;
+  }
  */
 
 // 1. Calculate the factorial of a number.  The factorial of a non-negative integer n,
@@ -79,7 +125,6 @@ var arraySum = function(array) {
 // 4. Check whether a number is even or not.
 var isEven = function(n) {
 	n = Math.abs(n);
-	n = Math.abs(n);
 	if (!n) {
 		return true;
 	}
@@ -93,6 +138,7 @@ var isEven = function(n) {
 // 5. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+	var results;
 	if (x === y || x - y === 1 || y - x === 1) {
 		return [];
 	} else {
@@ -114,7 +160,11 @@ var exponent = function(base, exp) {
 
 // 7. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
-
+	if (!string.length) {
+		return "";
+	}
+	// take the first letter out, then add to the end.
+	return reverse(string.slice(1)) + string.charAt(0);
 };
 
 
@@ -228,7 +278,11 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
 var fibonacci = function(n) {
-
+	// var results = [];
+	// if (n < 2) {
+	// 	return results.push(n);
+	// }
+	// results = results.concat(fibona
 };
 
 
